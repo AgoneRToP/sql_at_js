@@ -3,7 +3,6 @@ import { getAllCategories } from "../controller/categories.controller.js";
 
 const categoryRouter = Router();
 
-categoryRouter
-  .get("/categories", getAllCategories)
+categoryRouter.get("/categories", getAllCategories);
 
 export default categoryRouter;
