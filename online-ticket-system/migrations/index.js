@@ -36,6 +36,19 @@ export const TABLE_SCHEMAS = `
       ON DELETE SET NULL -- CASCADE
       ON UPDATE NO ACTION
   );
+
+  CREATE TABLE IF NOT EXISTS transactions(
+      transaction_id SERIAL PRIMARY KEY,
+      from_user INT REFERENCES users(user_id)
+      ON DELETE SET NULL
+      ON UPDATE NO ACTION,
+      to_tariff INT REFERENCES tariffs(tariff_id)
+      ON DELETE SET NULL
+      ON UPDATE NO ACTION,
+      amount MONEY NOT NULL,
+      created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+  );
+
 `;
 
 async function migrateSchemas() {
