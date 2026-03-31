@@ -1,6 +1,5 @@
 import pool from "../configs/database.config.js";
 
-
 export const getAllTransactions = async (req, res) => {
   const { rows: transactions } = await pool.query(
     `
@@ -36,8 +35,8 @@ export const doTransaction = async (req, res) => {
     FROM tariffs 
     WHERE tariff_id = ${tariff_id};
 
-    COMMIT;`
+    COMMIT;`,
   );
-  
+
   res.status(204).send();
-}
+};
